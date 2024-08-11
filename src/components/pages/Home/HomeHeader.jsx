@@ -1,4 +1,4 @@
-import NavBar from "../../layout/Nav/NavBar";
+import NavBar from "../../layout/NavBar";
 import Button from "../../layout/Button";
 function HomeHeader() {
   return (

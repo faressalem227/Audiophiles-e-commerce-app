@@ -1,5 +1,5 @@
-import BurgerIcon from "../../../assets/BurgerIcon.svg";
-import CartIcon from "../../../assets/CartIcon.svg";
+import BurgerIcon from "../../assets/BurgerIcon.svg";
+import CartIcon from "../../assets/CartIcon.svg";
 import ListItem from "./ListItem";
 
 function NavBar() {
