@@ -1,5 +1,12 @@
+import Header from "../../layout/Header";
+import Footer from "../../layout/Footer";
 function SpeakerPage() {
-  return <div>SpeakerPage</div>;
+  return (
+    <>
+      <Header title="SPEAKERS" />
+      <Footer />
+    </>
+  );
 }
 
 export default SpeakerPage;

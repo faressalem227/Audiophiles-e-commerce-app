@@ -1,5 +1,12 @@
+import Header from "../../layout/Header";
+import Footer from "../../layout/Footer";
 function HeadPhones() {
-  return <div>HeadPhonesCategory</div>;
+  return (
+    <>
+      <Header title="HEADPHONES" />
+      <Footer />
+    </>
+  );
 }
 
 export default HeadPhones;
