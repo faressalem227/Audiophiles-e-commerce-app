@@ -2,15 +2,16 @@ import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import HeaderContent from "../../layout/HeaderContent";
 
-function HeadPhones() {
+function AboutPage() {
   return (
     <>
       <Header>
-        <HeaderContent title={"HEADPHONES"} />
+        <HeaderContent title={"ABOUT US"} />
       </Header>
+      <main></main>
       <Footer />
     </>
   );
 }
 
-export default HeadPhones;
+export default AboutPage;

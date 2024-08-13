@@ -2,7 +2,7 @@ import ListItem from "./ListItem";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white  ">
+    <footer className="bg-black text-white">
       <div className="container flex flex-col gap-5 p-5  mx-auto text-center md:text-left  ">
         <div className="md:flex md:flex-col md:items-start md:justify-center  lg:flex-row lg:justify-between lg:items-center">
           <div className="flex flex-col mb-7 text-lg space-y-2 md:space-y-0 md:space-x-6 md:flex-row items-center font-bold">
@@ -20,6 +20,7 @@ const Footer = () => {
             <ListItem path="/Headphones">HEADPHONES</ListItem>
             <ListItem path="/Speakers">SPEAKERS</ListItem>
             <ListItem path="/Earphones">EARPHONES</ListItem>
+            <ListItem path="/About US">ABOUT US</ListItem>
           </ul>
         </div>
         <p className="mb-4  text-gray-500 max-w-xl  text-sm ">

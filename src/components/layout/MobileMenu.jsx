@@ -2,7 +2,7 @@ import ListItem from "./ListItem";
 // eslint-disable-next-line react/prop-types
 function MobileMenu({ handleMenu }) {
   return (
-    <div className=" bg-black absolute w-full h-full p-5 md:hidden">
+    <div className=" bg-black absolute w-full h-svh p-5 md:hidden">
       <div className=" flex justify-between items-center">
         <h4 className=" text-xl text-main_orange text-center mb-4">pages</h4>
         <button onClick={handleMenu}>
@@ -23,11 +23,12 @@ function MobileMenu({ handleMenu }) {
       </div>
 
       <span className=" block h-[1px] bg-binary_black mb-4"></span>
-      <menu className="    flex flex-col gap-5 items-center">
+      <menu className="flex flex-col gap-5 items-center">
         <ListItem path="/">HOME</ListItem>
         <ListItem path="/Headphones">HEADPHONES</ListItem>
         <ListItem path="/Speakers">SPEAKERS</ListItem>
         <ListItem path="/Earphones">EARPHONES</ListItem>
+        <ListItem path="/About US">ABOUT US</ListItem>
       </menu>
     </div>
   );
