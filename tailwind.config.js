@@ -9,6 +9,7 @@ export default {
         main_grey: "#F1F1F1",
         hover_grey: "#FAFAFA",
         binary_black: "#101010",
+        Neutral_grey: "#eee",
       },
       fontFamily: {
         ManRope: ["Manrope", "sans-serif"],
@@ -21,6 +22,10 @@ export default {
           "url('./src/assets/shared/desktop/image-best-gear.jpg')",
         AboutTabletImg: "url('./src/assets/shared/tablet/image-best-gear.jpg')",
         AboutMobileImg: "url('./src/assets/shared/mobile/image-best-gear.jpg')",
+        PatternCircle: "url('./src/assets/home/desktop/pattern-circles.svg')",
+        Zx7Mobile: "url('src/assets/home/mobile/image-speaker-zx7.jpg')",
+        Zx7Tablet: "url('src/assets/home/tablet/image-speaker-zx7.jpg')",
+        Zx7Desktop: "url('src/assets/home/desktop/image-speaker-zx7.jpg')",
       },
     },
   },

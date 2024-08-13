@@ -1,9 +1,18 @@
 import NavBar from "../../layout/NavBar";
 import Button from "../../layout/Button";
+import MobileMenu from "../../layout/MobileMenu";
+import { useState } from "react";
 function HomeHeader() {
+  const [isActive, setISActive] = useState(false);
+
+  function handleMenu() {
+    setISActive((prevState) => !prevState);
+  }
+
   return (
-    <header className=" h-svh md:h-lvh bg-binary_black bg-mobileHeaderImg md:bg-tabletHeaderImg lg:bg-pcHeaderImg bg-no-repeat bg-cover bg-center">
-      <NavBar />
+    <header className=" relative h-svh md:h-lvh bg-binary_black bg-mobileHeaderImg md:bg-tabletHeaderImg lg:bg-pcHeaderImg bg-no-repeat bg-cover bg-center">
+      {isActive && <MobileMenu handleMenu={handleMenu} />}
+      <NavBar handleMenu={handleMenu} />
       <section className=" container p-12 mx-auto mb-10 flex flex-col items-center lg:items-start gap-10  font-ManRope">
         <p className=" text-gray-500 text-[13px] tracking-[10px]">
           NEW PRODUCT

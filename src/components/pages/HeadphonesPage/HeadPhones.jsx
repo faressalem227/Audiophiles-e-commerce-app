@@ -4,6 +4,7 @@ function HeadPhones() {
   return (
     <>
       <Header title="HEADPHONES" />
+
       <Footer />
     </>
   );

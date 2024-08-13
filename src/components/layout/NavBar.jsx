@@ -1,11 +1,12 @@
 import ListItem from "./ListItem";
 
-function NavBar() {
+// eslint-disable-next-line react/prop-types
+function NavBar({ handleMenu }) {
   return (
     <nav className="container p-5 mx-auto ">
       <div className="flex items-center justify-between text-white font-ManRope">
         {/* Burger Menu for Mobile */}
-        <button className=" flex-1 md:hidden">
+        <button className=" flex-1 md:hidden" onClick={handleMenu}>
           <svg
             className="fill-white  hover:fill-main_orange duration-300"
             width="16"
