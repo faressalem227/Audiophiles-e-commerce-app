@@ -10,6 +10,7 @@ export default {
         hover_grey: "#FAFAFA",
         binary_black: "#101010",
         Neutral_grey: "#eee",
+        Desc_gray: "#7d7d7d"
       },
       fontFamily: {
         ManRope: ["Manrope", "sans-serif"],
