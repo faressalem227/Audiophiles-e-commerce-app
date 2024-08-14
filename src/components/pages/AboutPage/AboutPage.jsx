@@ -1,14 +1,17 @@
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import HeaderContent from "../../layout/HeaderContent";
-function EarPhonesPage() {
+
+function AboutPage() {
   return (
     <>
       <Header>
-        <HeaderContent title={"EARPHONES"} />
+        <HeaderContent title={"ABOUT US"} />
+      </Header>
+      <main></main>
       <Footer />
     </>
   );
 }
 
-export default EarPhonesPage;
+export default AboutPage;
