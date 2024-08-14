@@ -8,10 +8,13 @@ import About from"../../layout/About"
 import HeadPhonesTumbnail from "../../../assets/shared/desktop/image-category-thumbnail-headphones.png";
 import SpeakersTumbnail from "../../../assets/shared/desktop/image-category-thumbnail-speakers.png";
 import EarPhonesTumbnail from "../../../assets/shared/desktop/image-category-thumbnail-earphones.png";
+import HeaderContent from "../../layout/HeaderContent";
 function HeadPhones() {
   return (
     <>
-      <Header title="HEADPHONES" />
+      <Header>
+       < HeaderContent title={"HEADPHONES"}/>
+      </Header>
       <Headphone_items/>
       <Headphone_item1/> 
       <Headphone_item2/>
