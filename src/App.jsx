@@ -5,6 +5,7 @@ import SpeakerPage from "./components/pages/SpeakerPage/SpeakerPage";
 import EarPhonesPage from "./components/pages/EarphonesPage/EarPhonesPage";
 import AboutPage from "./components/pages/AboutPage/AboutPage";
 import ProductDetailsPage from "./components/pages/ProductDetails/ProductDetailsPage";
+import NotFoundPage from './components/pages/NotFound/NotFoundpage'
 function App() {
   return (
     <Router>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/Earphones" element={<EarPhonesPage />} />
         <Route path="/About US" element={<AboutPage />} />
         <Route path="/products/:id" element={<ProductDetailsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
