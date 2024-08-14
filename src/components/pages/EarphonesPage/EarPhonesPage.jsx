@@ -6,7 +6,6 @@ function EarPhonesPage() {
     <>
       <Header>
         <HeaderContent title={"EARPHONES"} />
-      </Header>
       <Footer />
     </>
   );
