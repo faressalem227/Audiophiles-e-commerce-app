@@ -40,6 +40,7 @@ function NavBar({ handleMenu }) {
           <ListItem path="/Speakers">SPEAKERS</ListItem>
           <ListItem path="/Earphones">EARPHONES</ListItem>
           <ListItem path="/About US">ABOUT US</ListItem>
+          <ListItem path="/Table">TABLE</ListItem>
         </ul>
 
         {/* Cart Button */}

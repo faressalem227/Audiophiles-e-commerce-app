@@ -10,7 +10,7 @@ function LoginForm() {
     let isValid = true;
     setEmailError("");
     setPasswordError("");
-
+    
     if (!email) {
       setEmailError("Email is required");
       isValid = false;
