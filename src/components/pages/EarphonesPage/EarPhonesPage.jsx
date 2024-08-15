@@ -4,7 +4,7 @@ import HeaderContent from "../../layout/HeaderContent";
 function EarPhonesPage() {
   return (
     <>
-      <Header>
+      <Header/>
         <HeaderContent title={"EARPHONES"} />
       <Footer />
     </>
