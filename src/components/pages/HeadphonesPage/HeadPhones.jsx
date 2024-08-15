@@ -1,6 +1,6 @@
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
-import CategoryNavigationSection from "../../layout/CategoryNavigationSection";
+import CategoryNavigationSection from "../../layout/CategoryNavigation/CategoryNavigationSection";
 import About from "../../layout/About";
 import ProductsSection from "../../layout/ProductsSection";
 import ProductsContext from "../../../store/ProductsContext";
@@ -27,9 +27,11 @@ function HeadPhones() {
       <Header>
         <HeaderContent title={"HEADPHONES"} />
       </Header>
-      <section className=" container p-5 mx-auto">{content}</section>
-      <CategoryNavigationSection />
-      <About />
+      <main>
+        <section className=" container p-5 mx-auto">{content}</section>
+        <CategoryNavigationSection />
+        <About />
+      </main>
       <Footer />
     </>
   );

@@ -1,7 +1,7 @@
-import CategoryItem from "../pages/Home/CategoryItem";
-import HeadPhonesTumbnail from "../../assets/shared/desktop/image-category-thumbnail-headphones.png";
-import SpeakersTumbnail from "../../assets/shared/desktop/image-category-thumbnail-speakers.png";
-import EarPhonesTumbnail from "../../assets/shared/desktop/image-category-thumbnail-earphones.png";
+import CategoryItem from "./CategoryItem";
+import HeadPhonesTumbnail from "../../../assets/shared/desktop/image-category-thumbnail-headphones.png";
+import SpeakersTumbnail from "../../../assets/shared/desktop/image-category-thumbnail-speakers.png";
+import EarPhonesTumbnail from "../../../assets/shared/desktop/image-category-thumbnail-earphones.png";
 
 function CategoryNavigationSection() {
   return (

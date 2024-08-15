@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import Button from "../layout/Button";
-function CategogryProduct({ isNew, name, description, images, index }) {
+import { Link } from "react-router-dom";
+function CategogryProduct({ id, isNew, name, description, images, index }) {
   const Images = {
     ...images,
   };
@@ -38,7 +39,12 @@ function CategogryProduct({ isNew, name, description, images, index }) {
         <p className=" p-3 lg:w-[450px] text-gray-500 text-center lg:text-left text-lg font-light ">
           {description}
         </p>
-        <Button orangeBtn> see product </Button>
+        <Button orangeBtn>
+          <Link to={`/products/${id}`} className=" w-full">
+            {" "}
+            see product{" "}
+          </Link>
+        </Button>
       </div>
     </div>
   );

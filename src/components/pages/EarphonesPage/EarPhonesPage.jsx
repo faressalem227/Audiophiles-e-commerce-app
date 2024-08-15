@@ -1,6 +1,6 @@
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
-import CategoryNavigationSection from "../../layout/CategoryNavigationSection";
+import CategoryNavigationSection from "../../layout/CategoryNavigation/CategoryNavigationSection";
 import About from "../../layout/About";
 import HeaderContent from "../../layout/HeaderContent";
 import ProductsSection from "../../layout/ProductsSection";
@@ -28,9 +28,11 @@ function EarPhonesPage() {
       <Header>
         <HeaderContent title={"EARPHONES"} />
       </Header>
-      <section className=" container p-5 mx-auto">{content}</section>
-      <CategoryNavigationSection />
-      <About />
+      <main>
+        <section className=" container p-5 mx-auto">{content}</section>
+        <CategoryNavigationSection />
+        <About />
+      </main>
       <Footer />
     </>
   );

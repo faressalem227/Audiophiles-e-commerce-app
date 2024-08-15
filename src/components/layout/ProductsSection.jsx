@@ -11,11 +11,12 @@ function ProductsSection({ products, category }) {
       {Categoryproducts.map((product, index) => (
         <CategogryProduct
           key={product.id}
+          id={product.id}
           index={index}
           isNew={product.new}
           name={product.name}
           description={product.description}
-          images={product.image}
+          images={product.categoryImage}
         />
       ))}
     </section>

@@ -2,7 +2,7 @@ import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import HeaderContent from "../../layout/HeaderContent";
 import About from "../../layout/About";
-
+import CategoryNavigationSection from "../../layout/CategoryNavigation/CategoryNavigationSection";
 import ProductsSection from "../../layout/ProductsSection";
 import ProductsContext from "../../../store/ProductsContext";
 import { useContext } from "react";
@@ -28,8 +28,11 @@ function SpeakerPage() {
       <Header>
         <HeaderContent title={"SPEAKERS"} />
       </Header>
-      <section className=" container p-5 mx-auto">{content}</section>
-      <About />
+      <main>
+        <section className=" container p-5 mx-auto">{content}</section>
+        <CategoryNavigationSection />
+        <About />
+      </main>
       <Footer />
     </>
   );

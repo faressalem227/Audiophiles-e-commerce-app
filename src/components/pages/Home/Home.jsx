@@ -1,6 +1,6 @@
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
-import CategoryNavigationSection from "../../layout/CategoryNavigationSection";
+import CategoryNavigationSection from "../../layout/CategoryNavigation/CategoryNavigationSection";
 import About from "../../layout/About";
 import Zx9Speacker from "./Zx9Speacker";
 import Yx1Earphones from "./Yx1Earphones";
