@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import Button from "../layout/Button";
 function CategogryProduct({ isNew, name, description, images, index }) {
@@ -19,7 +18,7 @@ function CategogryProduct({ isNew, name, description, images, index }) {
         <img
           src={Images.tablet}
           alt=""
-          className=" w-[450px] hidden md:block lg:hidden rounded-md"
+          className=" w-[450p] hidden md:block lg:hidden rounded-md"
         />
         <img
           src={Images.desktop}
