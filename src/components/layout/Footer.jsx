@@ -15,7 +15,7 @@ const Footer = () => {
             </svg>
           </div>
 
-          <ul className="flex flex-col uppercase  space-y-4  text-xs md:space-y-0 md:space-x-6 md:flex-row justify-center">
+          <ul className="flex flex-col items-center uppercase  space-y-4  text-xs md:space-y-0 md:space-x-6 md:flex-row justify-center">
             <ListItem path="/">HOME</ListItem>
             <ListItem path="/Headphones">HEADPHONES</ListItem>
             <ListItem path="/Speakers">SPEAKERS</ListItem>

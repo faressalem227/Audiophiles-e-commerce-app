@@ -1,20 +1,38 @@
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
-import Speaker_item1 from "./Speaker_item1";
-import Speaker_item2 from "./Speaker_item2";
-import About from "../../layout/About";
 import HeaderContent from "../../layout/HeaderContent";
-import CategoryNavigationSection from "../../layout/CategoryNavigationSection";
+import About from "../../layout/About";
+import CategoryNavigationSection from "../../layout/CategoryNavigation/CategoryNavigationSection";
+import ProductsSection from "../../layout/ProductsSection";
+import ProductsContext from "../../../store/ProductsContext";
+import { useContext } from "react";
+import Spinner from "../Spinner/Spinner";
+import NotFoundpage from "../NotFound/NotFoundpage";
+
 function SpeakerPage() {
+  const productCtx = useContext(ProductsContext);
+
+  let content;
+
+  if (productCtx.loading) {
+    content = <Spinner />;
+  } else if (productCtx.error) {
+    content = <NotFoundpage />;
+  } else {
+    content = (
+      <ProductsSection products={productCtx.products} category="speakers" />
+    );
+  }
   return (
     <>
       <Header>
         <HeaderContent title={"SPEAKERS"} />
       </Header>
-      <Speaker_item1 />
-      <Speaker_item2 />
-      <CategoryNavigationSection />
-      <About />
+      <main>
+        <section className=" container p-5 mx-auto">{content}</section>
+        <CategoryNavigationSection />
+        <About />
+      </main>
       <Footer />
     </>
   );

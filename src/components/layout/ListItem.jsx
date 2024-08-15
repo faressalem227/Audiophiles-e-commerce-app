@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function ListItem({ children, path, handleMenu }) {
   return (
-    <li className=" text-[13px]">
+    <li className=" text-[13px] w-fit">
       <button onClick={handleMenu}>
         <Link
           to={path}

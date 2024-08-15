@@ -1,20 +1,24 @@
+import mobileImg from "../../assets/shared/mobile/image-best-gear.jpg";
+import tabletImg from "../../assets/shared/tablet/image-best-gear.jpg";
+import desktopImg from "../../assets/shared/desktop/image-best-gear.jpg";
+
 const About = () => {
   return (
     <section className=" container p-5 mx-auto flex flex-col items-center justify-center  lg:flex-row lg:justify-between lg:p-12 gap-6 lg:gap-0 mb-16">
       {/* Image */}
       <div className="w-full mb-6 lg:mb-0 lg:w-1/2 lg:order-2">
         <img
-          src="src\assets\shared\mobile\image-best-gear.jpg"
+          src={mobileImg}
           alt="Audio Gear"
           className="w-full h-auto object-cover sm:hidden rounded-lg"
         />
         <img
-          src="src\assets\shared\tablet\image-best-gear.jpg"
+          src={tabletImg}
           alt="Audio Gear"
           className="w-full h-auto object-cover hidden sm:block lg:hidden rounded-lg"
         />
         <img
-          src="src\assets\shared\desktop\image-best-gear.jpg"
+          src={desktopImg}
           alt="Audio Gear"
           className="w-full h-[600px] object-cover hidden lg:block rounded-lg "
         />
