@@ -25,7 +25,7 @@ function EarPhonesPage() {
 
   return (
     <>
-      <Header/>
+      <Header>
         <HeaderContent title={"EARPHONES"} />
       </Header>
       <main>

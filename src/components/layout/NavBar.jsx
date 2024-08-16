@@ -39,12 +39,9 @@ function NavBar({ handleMenu }) {
           <ListItem path="/Headphones">HEADPHONES</ListItem>
           <ListItem path="/Speakers">SPEAKERS</ListItem>
           <ListItem path="/Earphones">EARPHONES</ListItem>
-<<<<<<< HEAD
           <ListItem path="/About US">ABOUT US</ListItem>
           <ListItem path="/Table">TABLE</ListItem>
-=======
           <ListItem path="/About US">ABOUT</ListItem>
->>>>>>> f08011b027228f763b1cf1283a1e65cc49a1501d
         </ul>
 
         {/* Cart Button */}
