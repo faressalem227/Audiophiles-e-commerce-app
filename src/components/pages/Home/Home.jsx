@@ -6,10 +6,26 @@ import Zx9Speacker from "./Zx9Speacker";
 import Yx1Earphones from "./Yx1Earphones";
 import Zx7Speacker from "./Zx7Speacker";
 import Button from "../../layout/Button";
+import { useState, useEffect } from "react";
+import { ToastContainer } from 'react-toastify'
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function Home() {
+  const isGreet = localStorage.getItem('greeting');
+
+  useEffect(() => {
+    if(isGreet === 'false') {
+      toast.success(`Welcome ${localStorage.getItem('fullname')} 😇`);
+      localStorage.setItem('greeting', true);
+    }
+    
+  }, [])
+
+
   return (
     <>
+      <ToastContainer />
       <Header>
         <div className=" h-svh md:h-lvh bg-binary_black bg-mobileHeaderImg md:bg-tabletHeaderImg lg:bg-pcHeaderImg bg-no-repeat bg-cover bg-center">
           <section className=" container p-12 mx-auto mb-10 flex flex-col items-center lg:items-start gap-10  font-ManRope">

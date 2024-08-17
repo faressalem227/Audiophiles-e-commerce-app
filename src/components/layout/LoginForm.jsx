@@ -1,10 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer } from 'react-toastify'
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import Spinner from "../pages/Spinner/Spinner";
+
 function LoginForm() {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
 
   const validateLoginForm = () => {
     let isValid = true;
@@ -27,13 +39,47 @@ function LoginForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateLoginForm()) {
-      // Perform login logic here
-      console.log("Form is valid. Email:", email, "Password:", password);
+      const user = {
+        Email: email,
+        Password: password
+      }
+
+      const url = 'https://localhost:44355/api/AudioAuth/login';
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+      }).then((res) => {
+        return res.json();
+      }).then((response) => {
+        if(response.isAuthenticated === true) {
+          // Store The JWT Token in the Localstorage
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('fullname', response.fullName);
+          localStorage.setItem('username', response.userName);
+          localStorage.setItem('roles', response.roles);
+          localStorage.setItem('greeting', false);
+          // Check the user Role here
+          if(response.roles.includes('User')) {
+            return navigate('/');
+          } else {
+            return navigate('/Admin');
+          }
+        } else {
+          toast.error(`${response.message}`);
+        }
+      }).catch((err) => {
+        toast.error(`Something went wrong: ${err}`);
+      });
     }
   };
 
   return (
+    <>{ loading ? <Spinner /> : 
     <div className="bg-gray-100 flex items-center justify-center h-screen">
+      <ToastContainer />
       <div className="w-full max-w-md space-y-8">
         <div className="bg-white p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
@@ -84,7 +130,7 @@ function LoginForm() {
           <div className="mt-6 text-center">
             <p className="text-gray-700">
               Already have an account?{" "}
-              <a className="text-orange-500 hover:underline">Sign Up here</a>
+              <Link to='/Register' className="text-orange-500 hover:underline">Sign Up here</Link>
             </p>
 
             <p className="text-black w-fit mx-auto my-4 hover:text-main_orange relative cursor-pointer">
@@ -94,6 +140,8 @@ function LoginForm() {
         </div>
       </div>
     </div>
+    }
+    </>
   );
 }
 

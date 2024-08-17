@@ -1,7 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import ListItem from "./ListItem";
+import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
 function NavBar({ handleMenu }) {
+  const navigate = useNavigate();
+  const [auth, setAuth] = useState(localStorage.getItem('token'));
+  
+  const handleLogout = () => {
+    localStorage.clear();
+    setAuth(null);
+    return navigate('/');
+  }
+
   return (
     <nav className="container p-5 mx-auto ">
       <div className="flex items-center justify-between text-white font-ManRope">
@@ -34,14 +45,22 @@ function NavBar({ handleMenu }) {
         </p>
 
         {/* Navigation Links */}
-        <ul className="hidden md:flex items-center justify-between flex-1 gap-4">
+        <ul className="hidden md:flex items-center justify-between flex-1 space-x-6">
           <ListItem path="/">HOME</ListItem>
           <ListItem path="/Headphones">HEADPHONES</ListItem>
           <ListItem path="/Speakers">SPEAKERS</ListItem>
           <ListItem path="/Earphones">EARPHONES</ListItem>
-          <ListItem path="/About US">ABOUT US</ListItem>
-          <ListItem path="/Table">TABLE</ListItem>
           <ListItem path="/About US">ABOUT</ListItem>
+          {
+            auth === null? (
+              <>
+              <button onClick={() => navigate('/login')} className="px-4 py-2 bg-transparent border-2 border-main_orange hover:bg-main_orange text-white">Login</button>
+              <button onClick={() => navigate('/register')} className="px-5 py-2 bg-main_orange text-white">Signup</button>
+              </>
+            ) : (
+              <button onClick={handleLogout} className="px-5 py-2 bg-main_orange text-white">Logout</button>
+            )
+          }
         </ul>
 
         {/* Cart Button */}
