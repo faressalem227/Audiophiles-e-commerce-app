@@ -21,7 +21,6 @@ const Footer = () => {
             <ListItem path="/Speakers">SPEAKERS</ListItem>
             <ListItem path="/Earphones">EARPHONES</ListItem>
             <ListItem path="/About US">ABOUT US</ListItem>
-            <ListItem path="/Table">TABLE</ListItem>
           </ul>
         </div>
         <p className="mb-4  text-gray-500 max-w-xl  text-sm ">

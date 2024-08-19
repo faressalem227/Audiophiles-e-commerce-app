@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { ToastContainer } from 'react-toastify'
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
 
 function Home() {
   const isGreet = localStorage.getItem('greeting');
@@ -41,7 +42,9 @@ function Home() {
             </p>
 
             <div>
-              <Button orangeBtn>See Product</Button>
+              <Button orangeBtn>
+                <Link to="products/xx99-mark-two-headphones">See Product</Link>
+              </Button>
             </div>
           </section>
         </div>

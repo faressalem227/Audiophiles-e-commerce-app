@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Button from "../layout/Button";
 import { Link } from "react-router-dom";
-function CategogryProduct({ id, isNew, name, description, images, index }) {
+function CategogryProduct({ slug, isNew, name, description, images, index }) {
   const Images = {
     ...images,
   };
@@ -40,8 +40,7 @@ function CategogryProduct({ id, isNew, name, description, images, index }) {
           {description}
         </p>
         <Button orangeBtn>
-          <Link to={`/products/${id}`} className=" w-full">
-            {" "}
+          <Link to={`/products/${slug}`} className=" w-full">
             see product{" "}
           </Link>
         </Button>

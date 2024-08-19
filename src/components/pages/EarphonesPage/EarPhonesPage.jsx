@@ -8,7 +8,9 @@ import { useContext } from "react";
 import ProductsContext from "../../../store/ProductsContext";
 import Spinner from "../Spinner/Spinner";
 import NotFoundpage from "../NotFound/NotFoundpage";
+import useScrollToTop from "../../../hooks/useScrollToTop";
 function EarPhonesPage() {
+  useScrollToTop();
   const productCtx = useContext(ProductsContext);
 
   let content;
@@ -16,7 +18,7 @@ function EarPhonesPage() {
   if (productCtx.loading) {
     content = <Spinner />;
   } else if (productCtx.error) {
-    content = <NotFoundpage />;
+    content = <NotFoundpage content={"Products"} />;
   } else {
     content = (
       <ProductsSection products={productCtx.products} category="earphones" />

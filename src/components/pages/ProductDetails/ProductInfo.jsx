@@ -1,23 +1,29 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import CartButton from "../../layout/CartButton";
 import Button from "../../layout/Button";
-
+import CartContext from "../../../store/CartContext";
+import { useContext } from "react";
 function ProductInfo({ product }) {
-  const [productQuantity, setProductQuantity] = useState(0);
-
-  function handleIncreaseQuantity() {
-    setProductQuantity((prevQuantity) => prevQuantity + 1);
-  }
-
-  function handleDecreaseQuantity(e) {
-    if (productQuantity === 0) {
-      e.preventDefault();
-    } else {
-      setProductQuantity((prevQuantity) => prevQuantity - 1);
-    }
-  }
-
   const isNew = product.new;
+
+  const CartCtx = useContext(CartContext);
+
+  const currentCartProductIndex = CartCtx.cartProducts.findIndex(
+    (cartProduct) => cartProduct.id === product.id
+  );
+
+  const productQuantity =
+    currentCartProductIndex > -1
+      ? CartCtx.cartProducts[currentCartProductIndex].quantity
+      : 0;
+
+  function handleAddProductToCart() {
+    CartCtx.addProduct(product);
+  }
+
+  function handleRemoveProductFromCart() {
+    CartCtx.removeProduct(product.id);
+  }
 
   return (
     <section className="font-ManRope flex flex-col lg:flex-row justify-center gap-4 lg:gap-24 my-16">
@@ -51,15 +57,12 @@ function ProductInfo({ product }) {
           {product.description}
         </p>
         <div className="p-5 flex gap-4">
-          <div className="w-[100px] flex justify-around items-center bg-main_grey">
-            <button className="text-gray-500" onClick={handleDecreaseQuantity}>
-              -
-            </button>
-            <p className="font-semibold">{productQuantity}</p>
-            <button className="text-gray-500" onClick={handleIncreaseQuantity}>
-              +
-            </button>
-          </div>
+          <CartButton
+            addProduct={handleAddProductToCart}
+            removeProduct={handleRemoveProductFromCart}
+            productQuantity={productQuantity}
+            bgColor={`bg-main_grey`}
+          />
           <Button orangeBtn>ADD TO CART</Button>
         </div>
       </div>

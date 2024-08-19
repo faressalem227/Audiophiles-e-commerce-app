@@ -1,6 +1,3 @@
-import mobileImg from "../../assets/shared/mobile/image-best-gear.jpg";
-import tabletImg from "../../assets/shared/tablet/image-best-gear.jpg";
-import desktopImg from "../../assets/shared/desktop/image-best-gear.jpg";
 
 const About = () => {
   return (
@@ -8,17 +5,17 @@ const About = () => {
       {/* Image */}
       <div className="w-full mb-6 lg:mb-0 lg:w-1/2 lg:order-2">
         <img
-          src={mobileImg}
+          src="/products/assets/shared/mobile/image-best-gear.jpg"
           alt="Audio Gear"
           className="w-full h-auto object-cover sm:hidden rounded-lg"
         />
         <img
-          src={tabletImg}
+          src="/products/assets/shared/tablet/image-best-gear.jpg"
           alt="Audio Gear"
           className="w-full h-auto object-cover hidden sm:block lg:hidden rounded-lg"
         />
         <img
-          src={desktopImg}
+          src="/products/assets/shared/desktop/image-best-gear.jpg"
           alt="Audio Gear"
           className="w-full h-[600px] object-cover hidden lg:block rounded-lg "
         />

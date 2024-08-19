@@ -8,13 +8,15 @@ import NotFoundpage from "../NotFound/NotFoundpage";
 import About from "../../layout/About";
 import CategoryNavigationSection from "../../layout/CategoryNavigation/CategoryNavigationSection";
 import ProductDeatails from "./ProductDeatails";
+import useScrollToTop from "../../../hooks/useScrollToTop";
 
 const ProductDetailsPage = () => {
+  useScrollToTop();
   const productCtx = useContext(ProductsContext);
-  const { id } = useParams();
+  const { slug } = useParams();
 
   const productIndex = productCtx.products.findIndex(
-    (product) => product.id === id
+    (product) => product.slug === slug
   );
 
   const product = productCtx.products[productIndex];
@@ -24,7 +26,7 @@ const ProductDetailsPage = () => {
   if (productCtx.loading) {
     content = <Spinner />;
   } else if (productCtx.error) {
-    content = <NotFoundpage />;
+    content = <NotFoundpage content={"Product Details"} />;
   } else if (productIndex === -1 || !product) {
     content = <NotFoundpage />;
   } else {

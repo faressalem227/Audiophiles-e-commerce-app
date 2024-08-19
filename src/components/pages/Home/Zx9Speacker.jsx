@@ -1,19 +1,17 @@
-import HeadPhoneDesktop from "../../../assets/home/desktop/image-speaker-zx9.png";
-import HeadPhoneTablet from "../../../assets/home/tablet/image-speaker-zx9.png";
-import HeadPhoneMobile from "../../../assets/home/mobile/image-speaker-zx9.png";
+import { Link } from "react-router-dom";
 
 function Zx9Speacker() {
   return (
     <div className=" relative overflow-hidden bg-main_orange flex flex-col lg:flex-row gap-4 rounded-md bg-PatternCircle bg-no-repeat bg-cover lg:bg-fill bg-center lg:bg-left">
       <div className=" p-3 flex justify-center flex-1 lg:h-[500px]">
-        <img src={HeadPhoneMobile} alt="" className=" md:hidden h-[200px]" />
+        <img src="/products/assets/home/mobile/image-speaker-zx9.png" alt="" className=" md:hidden h-[200px]" />
         <img
-          src={HeadPhoneTablet}
+          src="/products/assets/home/tablet/image-speaker-zx9.png"
           alt=""
           className=" hidden md:block lg:hidden h-[300px]"
         />
         <img
-          src={HeadPhoneDesktop}
+          src="/products/assets/home/desktop/image-speaker-zx9.png"
           alt=""
           className=" hidden lg:block h-[450px] object-contain absolute bottom-[-10px]"
         />
@@ -28,7 +26,7 @@ function Zx9Speacker() {
         </p>
         <div>
           <button className="p-3 w-[150px] sm:w-[200px] text-base font-semibold duration-300 text-white  bg-black hover:bg-slate-700">
-            see product
+            <Link to="products/zx9-speaker">See product</Link>
           </button>
         </div>
       </div>

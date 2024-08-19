@@ -1,16 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import ListItem from "./ListItem";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserProgressContext } from "../../store/UserProgressContext";
 
 // eslint-disable-next-line react/prop-types
 function NavBar({ handleMenu }) {
   const navigate = useNavigate();
   const [auth, setAuth] = useState(localStorage.getItem('token'));
-  
+  const userProgressCtx = useContext(UserProgressContext);
+
   const handleLogout = () => {
     localStorage.clear();
     setAuth(null);
     return navigate('/');
+  }
+  function handleShowCart() {
+    userProgressCtx.showCart();
   }
 
   return (
@@ -64,7 +69,10 @@ function NavBar({ handleMenu }) {
         </ul>
 
         {/* Cart Button */}
-        <button className=" flex justify-end flex-1 text-right ">
+        <button
+          onClick={handleShowCart}
+          className=" flex justify-end flex-1 text-right  outline-none "
+        >
           <svg
             className="fill-white  hover:fill-main_orange duration-300"
             width="23"
