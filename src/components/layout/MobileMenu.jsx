@@ -2,7 +2,7 @@ import ListItem from "./ListItem";
 // eslint-disable-next-line react/prop-types
 function MobileMenu({ handleMenu }) {
   return (
-    <div className=" bg-black absolute w-full h-svh p-5 md:hidden">
+    <div className=" bg-black absolute w-full h-svh p-5 md:hidden z-10">
       <div className=" flex justify-between items-center">
         <h4 className=" text-xl text-main_orange text-center mb-4">pages</h4>
         <button onClick={handleMenu}>

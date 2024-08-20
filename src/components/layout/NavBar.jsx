@@ -87,7 +87,7 @@ function NavBar({ handleMenu }) {
         {/* Cart Button */}
         <button
           onClick={handleShowCart}
-          className="flex justify-end flex-1 text-right outline-none relative"
+          className="flex justify-end flex-1 text-right outline-none relative z-0"
         >
           <svg
             className="fill-white hover:fill-main_orange transition-colors duration-300"
