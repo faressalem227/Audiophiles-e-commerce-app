@@ -5,13 +5,15 @@ import Modal from "../../layout/Modal";
 import CheckoutModal from "./CheckoutModal";
 import { UserProgressContext } from "../../../store/UserProgressContext";
 import useScrollToTop from "../../../hooks/useScrollToTop";
-// import CartContext from "../../../store/CartContext";
+import CartContext from "../../../store/CartContext";
+import { useNavigate } from "react-router-dom";
 
 function CheckoutPage() {
   useScrollToTop();
+  const navigate = useNavigate();
 
   const userProgressCtx = useContext(UserProgressContext);
-  // const CartCtx = useContext(CartContext);
+  const CartCtx = useContext(CartContext);
 
   const [formErrors, setFormErrors] = useState({});
   const [paymentMethod, setPaymentMethod] = useState("e-money");
@@ -33,6 +35,7 @@ function CheckoutPage() {
 
   function handleHideCheckout() {
     userProgressCtx.hideCheckout();
+    CartCtx.clearCart();
   }
 
   const handleSubmit = (event) => {
@@ -78,10 +81,17 @@ function CheckoutPage() {
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
     } else {
+      // Token 
+      let auth = localStorage.getItem('token');
+      if(auth === null) {
+        return navigate('/login');
+      }
       // Process the payment
       console.log("Form submitted successfully");
+      handleShowCheckout(); // Show the checkout modal if the form is valid
     }
   };
+
   function handleShowCheckout() {
     userProgressCtx.showCheckout();
   }
@@ -101,12 +111,12 @@ function CheckoutPage() {
 
         <form
           onSubmit={handleSubmit}
-          className=" container grid grid-cols-1 lg:grid-cols-3 gap-6   mx-auto p-6"
+          className="container grid grid-cols-1 lg:grid-cols-3 gap-6 mx-auto p-6"
         >
           {/* Checkout Section */}
           <section
             id="checkout"
-            className="lg:col-span-2 lg:row-span-2  bg-white p-6 shadow-lg rounded-md"
+            className="lg:col-span-2 lg:row-span-2 bg-white p-6 shadow-lg rounded-md"
           >
             <h1 className="font-semibold mb-8 text-4xl">CHECKOUT</h1>
 
@@ -260,9 +270,8 @@ function CheckoutPage() {
                   </div>
                 </div>
               </div>
-
               {paymentMethod === "e-money" && (
-                <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mt-4">
                   <div>
                     <label className="block mb-2" htmlFor="eMoneyNumber">
                       e-Money Number
@@ -284,7 +293,7 @@ function CheckoutPage() {
                       e-Money PIN
                     </label>
                     <input
-                      type="password"
+                      type="text"
                       id="eMoneyPin"
                       name="eMoneyPin"
                       className="w-full p-2 border border-gray-300 rounded"
@@ -303,60 +312,65 @@ function CheckoutPage() {
           {/* Summary Section */}
           <section
             id="summary"
-            className="lg:col-span-1  lg:row-span-1 flex flex-col  bg-white p-6 shadow-lg rounded-md"
+            className="bg-white p-6 shadow-lg rounded-md lg:col-span-1 lg:row-span-2"
           >
-            <h2 className="text-lg text-main_orange font-semibold mb-4">
-              Summary
+            <h2 className="text-lg font-semibold text-main_orange mb-4">
+              SUMMARY
             </h2>
-            <ul>
-              {cartProducts.map((product, index) => (
-                <li key={index} className="flex justify-between mb-4">
-                  <div className="flex items-center gap-4 rounded-md">
+            <ul className="mb-4">
+              {cartProducts.map((product) => (
+                <li
+                  key={product.id}
+                  className="flex justify-between items-center mb-4"
+                >
+                  <div className="flex items-center">
                     <img
                       src={product.image.mobile}
                       alt={product.name}
-                      className="w-16 h-16  rounded-md"
+                      className="w-16 h-16 mr-4"
                     />
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold">{product.name}</h3>
-                      <p className="text-sm text-gray-500">
-                        {product.quantity} x ${product.price.toFixed(2)}
+                    <div>
+                      <h3 className="text-sm font-semibold">{product.name}</h3>
+                      <p className="text-sm text-gray-600">
+                        $ {product.price.toFixed(2)}
                       </p>
                     </div>
                   </div>
-                  <p className="text-lg font-semibold">
-                    ${(product.price * product.quantity).toFixed(2)}
-                  </p>
+                  <p className="text-sm font-semibold">x{product.quantity}</p>
                 </li>
               ))}
             </ul>
-            <div className="flex justify-between mt-6">
-              <span className="text-lg font-semibold">Total</span>
-              <span className="text-lg font-semibold">
-                ${totalAmount.toFixed(2)}
-              </span>
+
+            <div className="flex justify-between items-center mb-4">
+              <p className="text-sm text-gray-600">TOTAL</p>
+              <p className="text-lg font-semibold">
+                $ {totalAmount.toFixed(2)}
+              </p>
             </div>
-            <div className="flex justify-between mt-2">
-              <span className="text-lg font-semibold">Shipping</span>
-              <span className="text-lg font-semibold">${shipping}</span>
+
+            <div className="flex justify-between items-center mb-4">
+              <p className="text-sm text-gray-600">SHIPPING</p>
+              <p className="text-lg font-semibold">$ {shipping.toFixed(2)}</p>
             </div>
-            <div className="flex justify-between mt-2">
-              <span className="text-lg font-semibold">VAT (20%)</span>
-              <span className="text-lg font-semibold">${vat.toFixed(2)}</span>
+
+            <div className="flex justify-between items-center mb-4">
+              <p className="text-sm text-gray-600">VAT (INCLUDED)</p>
+              <p className="text-lg font-semibold">$ {vat.toFixed(2)}</p>
             </div>
-            <div className="flex justify-between  mt-6 text-xl font-bold">
-              <span>Grand Total</span>
-              <span>${grandTotal.toFixed(2)}</span>
+
+            <div className="flex justify-between items-center mb-8">
+              <p className="text-sm text-gray-600">GRAND TOTAL</p>
+              <p className="text-lg font-semibold text-main_orange">
+                $ {grandTotal.toFixed(2)}
+              </p>
             </div>
-            <div className="">
-              <button
-                type="submit"
-                onClick={handleShowCheckout}
-                className="w-full  mt-8 p-4 bg-main_orange text-white font-semibold rounded"
-              >
-                Continue & Pay
-              </button>
-            </div>
+
+            <button
+              type="submit"
+              className="bg-main_orange text-white py-2 px-4 rounded-md w-full"
+            >
+              Continue & Pay
+            </button>
           </section>
         </form>
       </main>

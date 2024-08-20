@@ -16,6 +16,9 @@ import { CartContextProvider } from "./store/CartContext";
 import CheckoutPage from "./components/pages/Checout Page/CheckoutPage";
 import { ProductsContextProvider } from "./store/ProductsContext";
 import EditProductPage from "./components/pages/Admin/EditProductPage";
+import ContactPage from "./components/pages/Contact/ContactPage";
+import AllContactsPage from "./components/pages/Admin/AllContactsPage";
+import RespondPage from "./components/pages/Admin/RespondPage";
 
 function App() {
   return (
@@ -29,6 +32,7 @@ function App() {
               <Route path="/Speakers" element={<SpeakerPage />} />
               <Route path="/Earphones" element={<EarPhonesPage />} />
               <Route path="/About US" element={<AboutPage />} />
+              <Route path="/ContactUs" element={<ContactPage />} />
               <Route path="/products/:slug" element={<ProductDetailsPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/Register" element={<RegisterPage />} />
@@ -37,6 +41,8 @@ function App() {
               <Route path="/Admin/add-product" element={<AddProductPage />} />
               <Route path="/Admin/edit-product/:id" element={<EditProductPage />} />
               <Route path="/Admin/all-products" element={<AllProductsPage />} />
+              <Route path="/Admin/all-contacts" element={<AllContactsPage />} />
+              <Route path="/Admin/respond/:id" element={<RespondPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Router>

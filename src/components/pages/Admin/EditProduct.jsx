@@ -48,16 +48,16 @@ function EditProduct({ id }) {
       slug: data.slug,
       name: data.name,
       image: {
-        mobile: data.image.name,
-        tablet: data.image.name,
-        desktop: data.image.name,
+        mobile: "./assets/product-yx1-earphones/mobile/image-product.jpg",
+        tablet: "./assets/product-yx1-earphones/tablet/image-product.jpg",
+        desktop: "./assets/product-yx1-earphones/desktop/image-product.jpg"
       },
       category: data.catigory.toLowerCase(),
       categoryImage: {
-        mobile: data.categoryImage.name,
-        tablet: data.categoryImage.name,
-        desktop: data.categoryImage.name,
-      },
+        mobile: "./assets/product-yx1-earphones/mobile/image-category-page-preview.jpg" ,
+        tablet: "./assets/product-yx1-earphones/tablet/image-category-page-preview.jpg",
+        desktop: "./assets/product-yx1-earphones/desktop/image-category-page-preview.jpg"
+    },
       new: data.isNew,
       price: parseInt(data.price, 10),
       description: data.description,
@@ -82,6 +82,8 @@ function EditProduct({ id }) {
   };
 
   if (!product) return <div>Loading...</div>;
+
+  console.log(product.category);
 
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-5 mb-5">
@@ -131,12 +133,31 @@ function EditProduct({ id }) {
           id="countries"
           name="catigory"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          defaultValue={product.category}
         >
-          <option>Choose a catigory</option>
-          <option value="HeadPhone">HeadPhone</option>
-          <option value="Speaker">Speaker</option>
-          <option value="Earphone">Earphone</option>
+          {
+  
+            product.category == 'headphones'? (
+            <option value="headphones" selected>HeadPhone</option>
+            ) : (
+            <option value="headphones">HeadPhone</option>
+            )
+          }
+          {
+            product.category == 'speakers'? (
+              <option value="speakers" selected>Speaker</option>
+            ) : (
+              <option value="speakers">Speaker</option>
+            )
+          }
+          {
+            product.category == 'earphones'? (
+              <option value="earphones" selected>Earphone</option>
+            ) : (
+              <option value="earphones">Earphone</option>
+            )
+          }
+          
+          
         </select>
       </div>
       <div className="mb-5">
@@ -231,35 +252,6 @@ function EditProduct({ id }) {
           placeholder="Write your thoughts here..."
           defaultValue={product.features}
         ></textarea>
-      </div>
-      <div className="mb-5">
-        <label
-          className="block mb-2 text-sm font-medium text-gray-900"
-          htmlFor="image"
-        >
-          Upload file
-        </label>
-        <input
-          name="image"
-          className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
-          id="image"
-          type="file"
-        />
-      </div>
-      <div className="mb-5">
-        <label
-          className="block mb-2 text-sm font-medium text-gray-900"
-          htmlFor="categoryImage"
-        >
-          Upload multiple files
-        </label>
-        <input
-          name="categoryImage"
-          className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
-          id="categoryImage"
-          type="file"
-          multiple
-        />
       </div>
       <div>
         {dynamicInputs.map((input, index) => (

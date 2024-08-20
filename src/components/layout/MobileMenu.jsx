@@ -1,6 +1,19 @@
 import ListItem from "./ListItem";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 // eslint-disable-next-line react/prop-types
 function MobileMenu({ handleMenu }) {
+  const navigate = useNavigate();
+  const [auth, setAuth] = useState(localStorage.getItem("token"));
+
+  const handleLogout = () => {
+    localStorage.clear();
+    setAuth(null);
+    return navigate("/");
+  };
+
   return (
     <div className=" bg-black absolute w-full h-svh p-5 md:hidden z-10">
       <div className=" flex justify-between items-center">
@@ -29,6 +42,27 @@ function MobileMenu({ handleMenu }) {
         <ListItem path="/Speakers">SPEAKERS</ListItem>
         <ListItem path="/Earphones">EARPHONES</ListItem>
         <ListItem path="/About US">ABOUT US</ListItem>
+        {auth === null ? (
+            <>
+              <ListItem isLogin
+                path='/login'
+              >
+                LOGIN
+              </ListItem>
+              <ListItem isLogin
+                path="/register"
+              >
+                SIGNUP
+              </ListItem>
+            </>
+          ) : (
+            <button
+              onClick={handleLogout}
+              className="px-5 py-2 bg-main_orange text-white"
+            >
+              LOGOUT
+            </button>
+          )}
       </menu>
     </div>
   );

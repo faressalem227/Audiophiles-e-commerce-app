@@ -65,9 +65,10 @@ const Table = () => {
                     }`}
                   >
                     <td className="py-2 sm:py-3 px-2 sm:px-4 border-b border-gray-700">
-                      <Link className="hover:underline" to={`/products/${item.id}`}>
+                      {/* <Link className="hover:underline" to={`/products/${item.slug}`}>
                         {item.name}
-                      </Link>
+                      </Link> */}
+                      {item.name}
                     </td>
                     <td className="py-2 sm:py-3 px-2 sm:px-4 border-b border-gray-700">{item.slug}</td>
                     <td className="py-2 sm:py-3 px-2 sm:px-4 border-b border-gray-700">{item.price}</td>

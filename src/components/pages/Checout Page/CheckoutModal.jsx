@@ -28,7 +28,7 @@ function CheckoutModal({ closeCheckout }) {
           onClick={closeCheckout}
           className=" flex-1 uppercase p-3  text-base font-semibold duration-300 text-white bg-main_orange hover:bg-hover_orange "
         >
-          <Link to={`/`}>BACK TO HOME</Link>
+          <Link to="/">BACK TO HOME</Link>
         </button>
       </div>
     </div>

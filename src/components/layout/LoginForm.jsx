@@ -9,6 +9,7 @@ import Spinner from "../pages/Spinner/Spinner";
 function LoginForm() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [log, setLog] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -44,6 +45,8 @@ function LoginForm() {
         Password: password
       }
 
+      setLog(true);
+      setTimeout(() => setLog(false), 1000);
       const url = 'https://localhost:44355/api/AudioAuth/login';
       fetch(url, {
         method: 'POST',
@@ -120,12 +123,24 @@ function LoginForm() {
                 </p>
               )}
             </div>
-            <button
-              type="submit"
-              className="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-orange-500 transition-colors"
-            >
-              Login
-            </button>
+            {
+              log ? (
+                <button
+                  type="submit"
+                  className="opacity-50 cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-orange-500 transition-colors"
+                  disabled
+                >
+                  Just a moment ...
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-orange-500 transition-colors"
+                >
+                  Login
+                </button>
+              )
+            }
           </form>
           <div className="mt-6 text-center">
             <p className="text-gray-700">

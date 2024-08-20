@@ -2,11 +2,18 @@
 import CartButton from "../../layout/CartButton";
 import Button from "../../layout/Button";
 import CartContext from "../../../store/CartContext";
+import { UserProgressContext } from "../../../store/UserProgressContext";
 import { useContext } from "react";
 function ProductInfo({ product }) {
   const isNew = product.new;
 
   const CartCtx = useContext(CartContext);
+
+  const userProgressCtx = useContext(UserProgressContext);
+
+  function handelShowCart(params) {
+    userProgressCtx.showCart();
+  }
 
   const currentCartProductIndex = CartCtx.cartProducts.findIndex(
     (cartProduct) => cartProduct.id === product.id
@@ -63,7 +70,9 @@ function ProductInfo({ product }) {
             productQuantity={productQuantity}
             bgColor={`bg-main_grey`}
           />
-          <Button orangeBtn>ADD TO CART</Button>
+          <Button orangeBtn onClick={handelShowCart}>
+            ADD TO CART
+          </Button>
         </div>
       </div>
     </section>

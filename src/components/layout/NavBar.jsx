@@ -59,27 +59,26 @@ function NavBar({ handleMenu }) {
           <ListItem path="/Speakers">SPEAKERS</ListItem>
           <ListItem path="/Earphones">EARPHONES</ListItem>
           <ListItem path="/About US">ABOUT</ListItem>
+          <ListItem path="/contactus">CONTACT</ListItem>
           {auth === null ? (
             <>
-              <button
-                onClick={() => navigate("/login")}
-                className="px-4 py-2 bg-transparent border-2 border-main_orange hover:bg-main_orange text-white"
+              <ListItem isLogin
+                path='/login'
               >
-                Login
-              </button>
-              <button
-                onClick={() => navigate("/register")}
-                className="px-5 py-2 bg-main_orange text-white"
+                LOGIN
+              </ListItem>
+              <ListItem isLogin
+                path="/register"
               >
-                Signup
-              </button>
+                SIGNUP
+              </ListItem>
             </>
           ) : (
             <button
               onClick={handleLogout}
               className="px-5 py-2 bg-main_orange text-white"
             >
-              Logout
+              LOGOUT
             </button>
           )}
         </ul>

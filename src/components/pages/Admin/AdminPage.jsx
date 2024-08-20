@@ -38,6 +38,7 @@ const AdminPage = () => {
           </div>
           <div className="flex flex-col justify-center items-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
             <Link to='/admin/all-products' className='text-main_orange bg-transparent border-2 border-binary_black hover:bg-binary_black hover:text-white px-5 py-3'>All Products</Link>
+            <Link to='/admin/all-contacts' className='text-main_orange bg-transparent border-2 border-binary_black hover:bg-binary_black hover:text-white px-5 py-3'>All Messages</Link>
             <Link to='/admin/add-product' className='text-white bg-main_orange hover:bg-hover_orange px-5 py-3'>Add New Product</Link>
           </div>
         </div>

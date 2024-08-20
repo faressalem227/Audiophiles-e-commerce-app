@@ -62,21 +62,67 @@ function AddProduct(){
         slug: data.slug,
         name: data.name,
         image: {
-            mobile: data.image.name,
-            tablet:data.image.name,
-            desktop :data.image.name
+            mobile: "/products/assets/product-yx1-earphones/mobile/image-product.jpg",
+            tablet: "/products/assets/product-yx1-earphones/tablet/image-product.jpg",
+            desktop: "/products/assets/product-yx1-earphones/desktop/image-product.jpg"
         },
         category: data.catigory.toLowerCase(),
         categoryImage: {
-            mobile: data.categoryImage.name ,
-            tablet: data.categoryImage.name,
-            desktop: data.categoryImage.name
+            mobile: "/products/assets/product-yx1-earphones/mobile/image-category-page-preview.jpg" ,
+            tablet: "/products/assets/product-yx1-earphones/tablet/image-category-page-preview.jpg",
+            desktop: "/products/assets/product-yx1-earphones/desktop/image-category-page-preview.jpg"
         },
         new: data.isNew,
         price: parseInt(data.price, 10),
         description: data.description,
         features: data.feature,
         includes: includes,
+        "gallery": {
+        "first": {
+          "mobile": "/products/assets/product-zx9-speaker/mobile/image-gallery-1.jpg",
+          "tablet": "/products/assets/product-zx9-speaker/tablet/image-gallery-1.jpg",
+          "desktop": "/products/assets/product-zx9-speaker/desktop/image-gallery-1.jpg"
+        },
+        "second": {
+          "mobile": "/products/assets/product-zx9-speaker/mobile/image-gallery-2.jpg",
+          "tablet": "/products/assets/product-zx9-speaker/tablet/image-gallery-2.jpg",
+          "desktop": "/products/assets/product-zx9-speaker/desktop/image-gallery-2.jpg"
+        },
+        "third": {
+          "mobile": "/products/assets/product-zx9-speaker/mobile/image-gallery-3.jpg",
+          "tablet": "/products/assets/product-zx9-speaker/tablet/image-gallery-3.jpg",
+          "desktop": "/products/assets/product-zx9-speaker/desktop/image-gallery-3.jpg"
+        }
+      },
+      "others": [
+        {
+          "slug": "zx7-speaker",
+          "name": "ZX7 Speaker",
+          "image": {
+            "mobile": "/products/assets/shared/mobile/image-zx7-speaker.jpg",
+            "tablet": "/products/assets/shared/tablet/image-zx7-speaker.jpg",
+            "desktop": "/products/assets/shared/desktop/image-zx7-speaker.jpg"
+          }
+        },
+        {
+          "slug": "xx99-mark-one-headphones",
+          "name": "XX99 Mark I",
+          "image": {
+            "mobile": "/products/assets/shared/mobile/image-xx99-mark-one-headphones.jpg",
+            "tablet": "/products/assets/shared/tablet/image-xx99-mark-one-headphones.jpg",
+            "desktop": "/products/assets/shared/desktop/image-xx99-mark-one-headphones.jpg"
+          }
+        },
+        {
+          "slug": "xx59-headphones",
+          "name": "XX59",
+          "image": {
+            "mobile": "/products/assets/shared/mobile/image-xx59-headphones.jpg",
+            "tablet": "/products/assets/shared/tablet/image-xx59-headphones.jpg",
+            "desktop": "/products/assets/shared/desktop/image-xx59-headphones.jpg"
+          }
+        }
+      ]
     };
 
     fetch('http://localhost:3333/products', {
@@ -112,9 +158,9 @@ function AddProduct(){
         <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 ">Select an option</label>
         <select id="countries" name="catigory" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
             <option selected>Choose a catigory</option>
-            <option value="HeadPhone"> HeadPhone</option>
-            <option value="Speaker">Speaker</option>
-            <option value="Earphone">Earphone</option>
+            <option value="headphones"> HeadPhone</option>
+            <option value="speakers">Speaker</option>
+            <option value="earphones">Earphone</option>
         </select>  
         </div>
         
@@ -142,14 +188,6 @@ function AddProduct(){
          <div className="mb-5">
             <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 ">Feature</label>
             <textarea required id="message" name="feature" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Write your thoughts here..."></textarea>
-        </div>
-         <div className="mb-5"> 
-            <label className="block mb-2 text-sm font-medium text-gray-900 " htmlFor="file_input">Upload file</label>
-            <input required name="image" className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"/>
-        </div>
-         <div className="mb-5"> 
-        <label className="block mb-2 text-sm font-medium text-gray-900 " htmlFor="multiple_files">Upload multiple files</label>
-        <input required name="categoryImage" className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="multiple_files" type="file" multiple/>
         </div>
         <div id="dynamicInputs" ref={dynamicInputsRef} >
        </div>

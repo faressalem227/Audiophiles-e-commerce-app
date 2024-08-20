@@ -4,6 +4,7 @@ import Footer from '../../layout/Footer'
 import AdminHeader from '../../layout/AdminHeader'
 import EditProduct from './EditProduct'
 import { useParams, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const EditProductPage = () => {
     const { id } = useParams();

@@ -8,6 +8,7 @@ import Spinner from "../pages/Spinner/Spinner";
 function RegistrationForm() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [log, setLog] = useState(false);
   const [errors, setErrors] = useState({});
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -80,6 +81,8 @@ function RegistrationForm() {
         Password: password
       }
       
+      setLog(true);
+      setTimeout(() => setLog(false), 1000);
       const url = 'https://localhost:44355/api/AudioAuth/register';
       fetch(url, {
         method: 'POST',
@@ -224,12 +227,24 @@ function RegistrationForm() {
                 </p>
               )}
             </div>
-            <button
-              type="submit"
-              className="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-orange-500 transition-colors"
-            >
-              Register
-            </button>
+            {
+              log ? (
+                <button
+                  type="submit"
+                  className="opacity-50 cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-orange-500 transition-colors"
+                  disabled
+                >
+                  Just a moment ...
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-orange-500 transition-colors"
+                >
+                  Register
+                </button>
+              )
+            }
           </form>
         </div>
       </div>
