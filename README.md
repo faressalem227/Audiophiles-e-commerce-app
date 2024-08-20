@@ -59,16 +59,23 @@ npm run dev
 npm run server
 
 ## Technologies Used
+### Frontend:
+- React: For building the user interface.
+- Tailwind CSS: A utility-first CSS framework for styling.
+- Context API: For state management across the application.
+- Framer Motion: For animations and transitions.
+- Axios: For making HTTP requests to the backend.
 
-. Frontend:
+### Backend:
+- C# 
+- ASP.NET CORE WEB API
+- MS SQL Server
+- json.server
 
-. React: For building the user interface.
-. Tailwind CSS: A utility-first CSS framework for styling.
-. Context API: For state management across the application.
-. Framer Motion: For animations and transitions.
-. Axios: For making HTTP requests to the backend.
-
-.Backend:
-
-. C# ASP.NET CORE WEB API
-. json.server
+## Team Members:
+- Fares
+- Kareem
+- Bassem
+- Mohame Adel
+- Mohamed Salah
+- Ahmed Elmadbouly
