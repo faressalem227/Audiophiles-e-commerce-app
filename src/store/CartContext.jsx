@@ -75,8 +75,12 @@ function cartReducer(state, action) {
 }
 
 export function CartContextProvider({ children }) {
+  // Initialize cartProducts from localStorage
+  const initialCartProducts =
+    JSON.parse(localStorage.getItem("cartProducts")) || [];
+
   const [cart, dispatchCartFunction] = useReducer(cartReducer, {
-    cartProducts: [],
+    cartProducts: initialCartProducts,
   });
 
   function addProduct(cartProduct) {

@@ -1,30 +1,33 @@
+/* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import ListItem from "./ListItem";
 import { useState, useContext } from "react";
+import { CartContext } from "../../store/CartContext";
 import { UserProgressContext } from "../../store/UserProgressContext";
 
-// eslint-disable-next-line react/prop-types
 function NavBar({ handleMenu }) {
   const navigate = useNavigate();
-  const [auth, setAuth] = useState(localStorage.getItem('token'));
+  const [auth, setAuth] = useState(localStorage.getItem("token"));
   const userProgressCtx = useContext(UserProgressContext);
+  const { cartProducts } = useContext(CartContext);
 
   const handleLogout = () => {
     localStorage.clear();
     setAuth(null);
-    return navigate('/');
-  }
+    return navigate("/");
+  };
+
   function handleShowCart() {
     userProgressCtx.showCart();
   }
 
   return (
-    <nav className="container p-5 mx-auto ">
+    <nav className="container p-5 mx-auto">
       <div className="flex items-center justify-between text-white font-ManRope">
         {/* Burger Menu for Mobile */}
-        <button className=" flex-1 md:hidden" onClick={handleMenu}>
+        <button className="flex-1 md:hidden" onClick={handleMenu}>
           <svg
-            className="fill-white  hover:fill-main_orange duration-300"
+            className="fill-white hover:fill-main_orange duration-300"
             width="16"
             height="15"
             viewBox="0 0 16 15"
@@ -56,38 +59,60 @@ function NavBar({ handleMenu }) {
           <ListItem path="/Speakers">SPEAKERS</ListItem>
           <ListItem path="/Earphones">EARPHONES</ListItem>
           <ListItem path="/About US">ABOUT</ListItem>
-          {
-            auth === null? (
-              <>
-              <button onClick={() => navigate('/login')} className="px-4 py-2 bg-transparent border-2 border-main_orange hover:bg-main_orange text-white">Login</button>
-              <button onClick={() => navigate('/register')} className="px-5 py-2 bg-main_orange text-white">Signup</button>
-              </>
-            ) : (
-              <button onClick={handleLogout} className="px-5 py-2 bg-main_orange text-white">Logout</button>
-            )
-          }
+          {auth === null ? (
+            <>
+              <button
+                onClick={() => navigate("/login")}
+                className="px-4 py-2 bg-transparent border-2 border-main_orange hover:bg-main_orange text-white"
+              >
+                Login
+              </button>
+              <button
+                onClick={() => navigate("/register")}
+                className="px-5 py-2 bg-main_orange text-white"
+              >
+                Signup
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={handleLogout}
+              className="px-5 py-2 bg-main_orange text-white"
+            >
+              Logout
+            </button>
+          )}
         </ul>
 
         {/* Cart Button */}
         <button
           onClick={handleShowCart}
-          className=" flex justify-end flex-1 text-right  outline-none "
+          className="flex justify-end flex-1 text-right outline-none relative"
         >
           <svg
-            className="fill-white  hover:fill-main_orange duration-300"
+            className="fill-white hover:fill-main_orange transition-colors duration-300"
             width="23"
             height="20"
+            viewBox="0 0 23 20"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path
-              d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z"
-              fillRule="nonzero"
-            />
+            <g id="Combined Shape 2">
+              <path
+                id="Combined Shape"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M7.41142 13.1946H7.41037C7.03959 13.1955 6.73829 13.491 6.73829 13.8542C6.73829 14.2179 7.04064 14.5139 7.41212 14.5139H19.6309C20.0031 14.5139 20.3047 14.8092 20.3047 15.1736C20.3047 15.538 20.0031 15.8333 19.6309 15.8333H18.4821H8.625H7.41212C6.2975 15.8333 5.39063 14.9455 5.39063 13.8542C5.39063 13.0421 5.89302 12.343 6.60914 12.0382L4.17634 1.31944H0.673829C0.301644 1.31944 0 1.02412 0 0.659722C0 0.295329 0.301644 0 0.673829 0H4.7168C5.03266 0 5.30605 0.214753 5.37467 0.516611L5.85635 2.63889H22.3262C22.5377 2.63889 22.7368 2.73613 22.8642 2.9014C22.9914 3.06668 23.0322 3.28074 22.9741 3.47986L20.2788 12.716C20.1961 12.9991 19.9317 13.1944 19.6309 13.1944H7.41405L7.41142 13.1946ZM8.625 15.8333C9.75732 15.8333 10.6786 16.7679 10.6786 17.9167C10.6786 19.0654 9.75732 20 8.625 20C7.49268 20 6.57143 19.0654 6.57143 17.9167C6.57143 16.7679 7.49268 15.8333 8.625 15.8333ZM18.4821 15.8333C19.6145 15.8333 20.5357 16.7679 20.5357 17.9167C20.5357 19.0654 19.6145 20 18.4821 20C17.3498 20 16.4286 19.0654 16.4286 17.9167C16.4286 16.7679 17.3498 15.8333 18.4821 15.8333ZM19.1225 11.875L21.4329 3.95833H6.15571L7.95259 11.875H19.1225ZM9.30952 17.9167C9.30952 17.5338 9.00238 17.2222 8.625 17.2222C8.24762 17.2222 7.94048 17.5338 7.94048 17.9167C7.94048 18.2995 8.24762 18.6111 8.625 18.6111C9.00238 18.6111 9.30952 18.2995 9.30952 17.9167ZM18.4821 17.2222C18.8595 17.2222 19.1667 17.5338 19.1667 17.9167C19.1667 18.2995 18.8595 18.6111 18.4821 18.6111C18.1048 18.6111 17.7976 18.2995 17.7976 17.9167C17.7976 17.5338 18.1048 17.2222 18.4821 17.2222Z"
+              />
+            </g>
           </svg>
+
+          {cartProducts.length > 0 && (
+            <span className="absolute top-[12px] right-[-6px] w-3 h-3 bg-red-600 text-white text-xs rounded-full flex items-center justify-center">
+              {cartProducts.length}
+            </span>
+          )}
         </button>
       </div>
-
-      {/* Divider */}
       <span className="block w-full h-px mt-6 bg-gray-600"></span>
     </nav>
   );
