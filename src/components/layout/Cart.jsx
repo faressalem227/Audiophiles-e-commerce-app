@@ -5,7 +5,13 @@ import CartContext from "../../store/CartContext";
 import { useContext } from "react";
 function Cart({ closeCart }) {
   const CartCtx = useContext(CartContext);
-  const cartProducts = CartCtx.cartProducts || [];
+
+  function getCartProductsFromLocalStorage() {
+    const storedCartProducts = localStorage.getItem("cartProducts");
+    return storedCartProducts ? JSON.parse(storedCartProducts) : [];
+  }
+
+  const cartProducts = getCartProductsFromLocalStorage();
 
   const totalAmount = cartProducts.reduce(
     (total, product) => total + product.price * product.quantity,

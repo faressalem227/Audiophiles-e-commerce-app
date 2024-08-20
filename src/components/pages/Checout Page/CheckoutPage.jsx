@@ -5,17 +5,23 @@ import Modal from "../../layout/Modal";
 import CheckoutModal from "./CheckoutModal";
 import { UserProgressContext } from "../../../store/UserProgressContext";
 import useScrollToTop from "../../../hooks/useScrollToTop";
-import CartContext from "../../../store/CartContext";
+// import CartContext from "../../../store/CartContext";
 
 function CheckoutPage() {
   useScrollToTop();
 
   const userProgressCtx = useContext(UserProgressContext);
-  const CartCtx = useContext(CartContext);
-  const cartProducts = CartCtx.cartProducts || [];
+  // const CartCtx = useContext(CartContext);
 
   const [formErrors, setFormErrors] = useState({});
   const [paymentMethod, setPaymentMethod] = useState("e-money");
+
+  function getCartProductsFromLocalStorage() {
+    const storedCartProducts = localStorage.getItem("cartProducts");
+    return storedCartProducts ? JSON.parse(storedCartProducts) : [];
+  }
+
+  const cartProducts = getCartProductsFromLocalStorage();
 
   const totalAmount = cartProducts.reduce(
     (total, product) => total + product.price * product.quantity,
@@ -79,7 +85,7 @@ function CheckoutPage() {
   function handleShowCheckout() {
     userProgressCtx.showCheckout();
   }
-  
+
   return (
     <>
       <Header />
@@ -343,13 +349,14 @@ function CheckoutPage() {
               <span>${grandTotal.toFixed(2)}</span>
             </div>
             <div className="">
-            <button
+              <button
                 type="submit"
                 onClick={handleShowCheckout}
-              className="w-full  mt-8 p-4 bg-main_orange text-white font-semibold rounded"
-            >
-              Continue & Pay
-            </button></div>
+                className="w-full  mt-8 p-4 bg-main_orange text-white font-semibold rounded"
+              >
+                Continue & Pay
+              </button>
+            </div>
           </section>
         </form>
       </main>

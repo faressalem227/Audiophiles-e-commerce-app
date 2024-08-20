@@ -10,12 +10,14 @@ export const CartContext = createContext({
 });
 
 function cartReducer(state, action) {
+  let updatedCartProducts;
+
   if (action.type === "ADD_PRODUCT") {
     const existingCartItemIndex = state.cartProducts.findIndex(
       (cartProduct) => cartProduct.id === action.cartProduct.id
     );
 
-    const updatedCartProducts = [...state.cartProducts];
+    updatedCartProducts = [...state.cartProducts];
 
     if (existingCartItemIndex > -1) {
       const existingCartProduct = updatedCartProducts[existingCartItemIndex];
@@ -27,6 +29,9 @@ function cartReducer(state, action) {
     } else {
       updatedCartProducts.push({ ...action.cartProduct, quantity: 1 });
     }
+
+    // Update localStorage
+    localStorage.setItem("cartProducts", JSON.stringify(updatedCartProducts));
 
     return { ...state, cartProducts: updatedCartProducts };
   }
@@ -40,8 +45,8 @@ function cartReducer(state, action) {
       return state;
     }
 
+    updatedCartProducts = [...state.cartProducts];
     const existingCartProduct = state.cartProducts[existingCartItemIndex];
-    const updatedCartProducts = [...state.cartProducts];
 
     if (existingCartProduct.quantity === 1) {
       updatedCartProducts.splice(existingCartItemIndex, 1);
@@ -53,10 +58,16 @@ function cartReducer(state, action) {
       updatedCartProducts[existingCartItemIndex] = updatedCartProduct;
     }
 
+    // Update localStorage
+    localStorage.setItem("cartProducts", JSON.stringify(updatedCartProducts));
+
     return { ...state, cartProducts: updatedCartProducts };
   }
 
   if (action.type === "CLEAR_CART") {
+    // Clear localStorage
+    localStorage.removeItem("cartProducts");
+
     return { ...state, cartProducts: [] };
   }
 
