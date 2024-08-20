@@ -2,7 +2,7 @@
 
 ## Overview
 
-Audiophiles is a responsive e-commerce application designed for audio equipment enthusiasts. The application supports three types of users: Admins, Member Users, and Guests, each with distinct access levels and functionalities.
+Responsive audiophiles e-commerce application hosts 3 types of users Admins, Member Users and Guests. Guests can browse all products, add/remove them to/from cart and can’t make orders until signup or login. Member Users can enjoy all features of the website which can make an order pay for the products online and even more. Admins have all privileges and control of the website who can make CRUD operations on the products, show all users and have a dynamic dashboard for statistics.
 
 ## User Roles
 
