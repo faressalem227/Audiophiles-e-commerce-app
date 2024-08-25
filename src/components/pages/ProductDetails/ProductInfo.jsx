@@ -5,6 +5,23 @@ import CartContext from "../../../store/CartContext";
 import { UserProgressContext } from "../../../store/UserProgressContext";
 import { useContext } from "react";
 function ProductInfo({ product }) {
+  // Changes Based on Custom Added API For Images Uploading
+  let imgMob = '';
+  let imgTab = '';
+  let imgDes = '';
+  
+  if(product.id.length > 1) {
+    imgMob = `https://localhost:44355/Product/${product.image.mobile}`;
+    imgTab = `https://localhost:44355/Product/${product.image.tablet}`;
+    imgDes = `https://localhost:44355/Product/${product.image.desktop}`;
+  } else {
+    imgMob = `${product.image.mobile}`;
+    imgTab = `${product.image.tablet}`;
+    imgDes = `${product.image.desktop}`;
+  }
+
+
+
   const isNew = product.new;
 
   const CartCtx = useContext(CartContext);
@@ -36,17 +53,17 @@ function ProductInfo({ product }) {
     <section className="font-ManRope flex flex-col lg:flex-row justify-center gap-4 lg:gap-24 my-16">
       <div className="h-[450px] flex justify-center">
         <img
-          src={product.image.mobile}
+          src={imgMob}
           alt="product image"
           className="md:hidden rounded-md"
         />
         <img
-          src={product.image.tablet}
+          src={imgTab}
           alt="product image"
           className="w-[450px] hidden md:block lg:hidden rounded-md"
         />
         <img
-          src={product.image.desktop}
+          src={imgDes}
           alt="product image"
           className="hidden lg:block rounded-md"
         />

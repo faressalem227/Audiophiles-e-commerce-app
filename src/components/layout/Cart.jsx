@@ -55,7 +55,7 @@ function Cart({ closeCart }) {
             >
               <div className="flex items-center ">
                 <img
-                  src={cartProduct.image.mobile}
+                  src={cartProduct.id.length > 1? `https://localhost:44355/Product/${cartProduct.image.mobile}` : cartProduct.image.mobile}
                   alt={cartProduct.name}
                   className="mr-4 w-16 h-16 rounded-lg"
                 />

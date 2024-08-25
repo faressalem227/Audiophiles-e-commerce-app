@@ -24,7 +24,7 @@ const Summary = ({ showCheckout, isSubmitting }) => {
           <div key={product.id} className="flex justify-between items-center">
             <div className="flex items-center">
               <img
-                src={product.image.mobile}
+                src={product.id.length > 1? `https://localhost:44355/Product/${product.image.mobile}` : product.image.mobile}
                 alt={product.name}
                 className="mr-4 w-16 h-16 rounded-lg"
               />

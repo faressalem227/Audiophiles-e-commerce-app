@@ -84,7 +84,7 @@ function CheckoutPage() {
       // Token 
       let auth = localStorage.getItem('token');
       if(auth === null) {
-        return navigate('/login');
+        return navigate('/register');
       }
       // Process the payment
       console.log("Form submitted successfully");
@@ -325,7 +325,7 @@ function CheckoutPage() {
                 >
                   <div className="flex items-center">
                     <img
-                      src={product.image.mobile}
+                      src={product.id.length > 1? `https://localhost:44355/Product/${product.image.mobile}` : product.image.mobile}
                       alt={product.name}
                       className="w-16 h-16 mr-4"
                     />

@@ -18,7 +18,7 @@ function ProductDeatails({ product }) {
       </div>
       <ProductInfo product={product} />
       <ProductFeatures product={product} />
-      <ProductGallery gallery={product.gallery} />
+      <ProductGallery gallery={product.gallery} id={product.id} />
       <ProductOthers product={product} />
     </section>
   );

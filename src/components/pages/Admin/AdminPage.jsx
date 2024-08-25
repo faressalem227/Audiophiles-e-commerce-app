@@ -11,12 +11,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AdminPage = () => {
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const roles = localStorage.getItem('roles');
     const isGreet = localStorage.getItem('greeting');
 
     useEffect(() => {
-        setTimeout(() => setLoading(false), 1000);
+        // setTimeout(() => setLoading(false), 1000);
         if(roles === null || roles !== 'Admin')
             return navigate('/NotFound');
         if(isGreet === 'false') {

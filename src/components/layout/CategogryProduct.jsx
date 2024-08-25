@@ -1,10 +1,24 @@
 /* eslint-disable react/prop-types */
 import Button from "../layout/Button";
 import { Link } from "react-router-dom";
-function CategogryProduct({ slug, isNew, name, description, images, index }) {
+function CategogryProduct({ slug, isNew, name, description, images, index, id }) {
   const Images = {
     ...images,
   };
+
+  let imgMob = '';
+  let imgTab = '';
+  let imgDes = '';
+  
+  if(id.length > 1) {
+    imgMob = `https://localhost:44355/Product/${Images.mobile}`;
+    imgTab = `https://localhost:44355/Product/${Images.tablet}`;
+    imgDes = `https://localhost:44355/Product/${Images.desktop}`;
+  } else {
+    imgMob = `${Images.mobile}`;
+    imgTab = `${Images.tablet}`;
+    imgDes = `${Images.desktop}`;
+  }
 
   let imgClass = "h-[450px] flex justify-center";
 
@@ -15,14 +29,14 @@ function CategogryProduct({ slug, isNew, name, description, images, index }) {
   return (
     <div className=" flex flex-col lg:flex-row justify-center gap-4 lg:gap-24 my-16 ">
       <div className={imgClass}>
-        <img src={Images.mobile} alt="" className=" md:hidden rounded-md" />
+        <img src={imgMob} alt="" className=" md:hidden rounded-md" />
         <img
-          src={Images.tablet}
+          src={imgTab}
           alt=""
           className=" w-[450p] hidden md:block lg:hidden rounded-md"
         />
         <img
-          src={Images.desktop}
+          src={imgDes}
           alt=""
           className="  hidden lg:block rounded-md"
         />

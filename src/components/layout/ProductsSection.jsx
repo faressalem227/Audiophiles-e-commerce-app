@@ -6,17 +6,20 @@ function ProductsSection({ products, category }) {
     return product.category === category;
   });
 
+  console.log(Categoryproducts);
+
   return (
     <section className=" flex flex-col gap-7">
       {Categoryproducts.map((product, index) => (
         <CategogryProduct
           key={product.id}
+          id={product.id}
           slug={product.slug}
           index={index}
           isNew={product.new}
           name={product.name}
           description={product.description}
-          images={product.categoryImage}
+          images={product.id.length > 1? product.image : product.categoryImage}
         />
       ))}
     </section>
