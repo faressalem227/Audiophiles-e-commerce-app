@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import ProductInfo from "./ProductInfo";
 import ProductFeatures from "./ProductFeatures";
-import ProductGallery from "./ProductGallery";
+import ProductGallery from "./ProductGallery.jsx";
 import ProductOthers from "./ProductOthers";
 function ProductDetails({ product }) {
   //   console.log(product);
