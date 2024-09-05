@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import NotFoundpage from "../NotFound/NotFoundpage";
 import About from "../../layout/About";
 import CategoryNavigationSection from "../../layout/CategoryNavigation/CategoryNavigationSection";
-import ProductDeatails from "./ProductDeatails";
+import ProductDetails from "./ProductDetails";
 import useScrollToTop from "../../../hooks/useScrollToTop";
 
 const ProductDetailsPage = () => {
@@ -32,7 +32,7 @@ const ProductDetailsPage = () => {
   } else {
     content = (
       <>
-        <ProductDeatails product={product} />
+        <ProductDetails product={product} />
         <CategoryNavigationSection />
         <About />
       </>

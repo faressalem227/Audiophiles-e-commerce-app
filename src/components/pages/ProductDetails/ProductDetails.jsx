@@ -4,7 +4,7 @@ import ProductInfo from "./ProductInfo";
 import ProductFeatures from "./ProductFeatures";
 import ProductGallery from "./ProductGallery";
 import ProductOthers from "./ProductOthers";
-function ProductDeatails({ product }) {
+function ProductDetails({ product }) {
   //   console.log(product);
   //   console.log(product.image);
 
@@ -24,4 +24,4 @@ function ProductDeatails({ product }) {
   );
 }
 
-export default ProductDeatails;
+export default ProductDetails;
