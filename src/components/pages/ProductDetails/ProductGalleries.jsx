@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function ProductGallery({ gallery, id }) {
+function ProductGalleries({ gallery, id }) {
   let fMob = "";
   let fTab = "";
   let fDes = "";
@@ -89,4 +89,4 @@ function ProductGallery({ gallery, id }) {
   );
 }
 
-export default ProductGallery;
+export default ProductGalleries;

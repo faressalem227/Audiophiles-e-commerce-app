@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ProductInfo from "./ProductInfo";
 import ProductFeatures from "./ProductFeatures";
 
-import ProductGallery from "./ProductGalleries";
+import ProductGalleries from "./ProductGalleries";
 import ProductOthers from "./ProductOthers";
 function ProductDetails({ product }) {
   //   console.log(product);
@@ -19,7 +19,7 @@ function ProductDetails({ product }) {
       </div>
       <ProductInfo product={product} />
       <ProductFeatures product={product} />
-      <ProductGallery gallery={product.gallery} id={product.id} />
+      <ProductGalleries gallery={product.gallery} id={product.id} />
       <ProductOthers product={product} />
     </section>
   );
